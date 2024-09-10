@@ -1,3 +1,7 @@
+#date
+#period
+#name
+
 fname = "Nataly"
 lname = "Parache"
 
