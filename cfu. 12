@@ -1,0 +1,22 @@
+#nataly Parache
+#10-29-24
+#pd 1-2
+'''
+
+Write a program that asks the user for the password.
+-The Password should initially be set to “simonsnyc”
+-It keeps asking them for the password until they get
+it correct.-For the incorrect password, it should say 
+“Wrong Password!)-For correct password
+it should say “Correct! You may enter….”-And then it 
+ends the program
+
+'''
+password = "simonsnyc"
+userInput = " "
+
+while password != userInput:
+    print("Wrong password")
+    userInput = input("Enter password:")
+
+print("correct!!! you may enter...")
