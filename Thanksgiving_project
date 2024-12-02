@@ -1,0 +1,54 @@
+#nataly parache
+#12-2-24
+#pd 1-2
+
+import simplegui
+ 
+# Frame setup
+frame = simplegui.create_frame("Thanksgiving Drawing", 600, 400)
+                               
+# Function to draw the pumpkin
+def draw_pumpkin(canvas, x, y):
+    #Pumpkin body
+    canvas. draw_circle((x, y), 50, 3, "Orange", "Orange")
+    canvas.draw_circle((x - 30, y), 40, 2, "Orange", "Orange")
+    canvas.draw_circle((x + 30, y), 40, 2, "Orange", "Orange")
+    # Pumpkin stem
+    canvas.draw_polygon([(x - 5, y - 50), (x + 5, y - 50), (x + 10, y - 70), (x - 10, y - 70)], 2, "Brown", "Brown")
+
+# Function to draw leaves
+def draw_leaves(canvas, x, y):
+    leaf_points = [(x, y), (x + 15, y - 15), (x + 30, y), (x + 15, y + 15)]
+    canvas.draw_polygon(leaf_points, 2, "Green", "Green")
+    canvas.draw_polygon([(p[0] - 40, p[1]) for p in leaf_points], 2, "Yellow", "Yellow")
+
+# Function to draw the scene
+def draw_handler(canvas):
+    # Background
+    canvas.draw_polygon([(0, 0), (600, 0), (600, 400), (0, 400)], 1, "SkyBlue", "SkyBlue")
+    canvas.draw_polygon([(0, 300), (600, 300), (600, 400), (0, 400)], 1, "GoldenRod", "GoldenRod")
+    
+    # Draw pumpkins
+    draw_pumpkin(canvas, 200, 330)
+    draw_pumpkin(canvas, 400, 340)
+    
+    # Draw fall leaves
+    for i in range(3):
+        draw_leaves(canvas, 180 + i * 80, 260)
+    
+    # Add decorative points
+    for i in range(0, 600, 20):
+        canvas.draw_point((i, 290), "Red")
+    for i in range(0, 600, 20):
+        canvas.draw_point((i, 310), "Brown")
+    for i in range(0, 600, 20):
+        canvas.draw_point((i, 320), "Orange")
+    
+    # Add a sun
+    canvas.draw_circle((500, 50), 40, 3, "Yellow", "Yellow")
+
+# Register the draw handler
+frame.set_draw_handler(draw_handler)
+
+# Start the frame
+frame.start()
